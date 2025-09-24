@@ -173,29 +173,6 @@ Flutter Uygulama Kurulumu
   
   }
   
-- **Firestore
-devices/
-
-  └──
-  {deviceId}/
-  
-      └──
-  logs/
-          └──
-  {logId}/
-              ├──
-  action: "on|off"
-              ├──
-  source: "MOBİL|BUTON"
-              ├──
-  deviceId: string
-              ├──
-   page: string
-              ├──
-   platform: string
-              └──
-  at: timestamp
-
 ---
 
 🔐 Güvenlik Özellikleri
