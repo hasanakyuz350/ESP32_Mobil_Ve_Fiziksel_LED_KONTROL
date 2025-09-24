@@ -14,18 +14,6 @@ Bu proje, gerçek zamanlı LED kontrol sistemi sunmaktadır:
 - **İnteraktif grafiklerle kullanım istatistikleri
 - **Fiziksel buton ile mobil uygulama arasında anlık senkronizasyon
 
----
-
-🏗️ Sistem Mimarisi
-
-Sistem Bileşenleri
-
-┌─────────────┐     Firebase      ┌──────────────┐
-│   ESP32C6   │◄──────────────────►│ Flutter App  │
-│  + Buton    │   Realtime DB      │   (Mobil)    │
-│  + LED      │   & Firestore      │              │
-└─────────────┘                    └──────────────┘
-
 Teknoloji Altyapısı
 
 - **Donanım: ESP32-C6 mikrodenetleyici
@@ -41,19 +29,29 @@ Teknoloji Altyapısı
 ESP32 Firmware Özellikleri
 
 ✅ Otomatik yeniden bağlanma ile WiFi bağlantısı
+
 ✅ Debouncing algoritmalı fiziksel buton kontrolü
+
 ✅ Firebase ile gerçek zamanlı senkronizasyon
+
 ✅ Yeniden deneme mantığı ile komut kuyruğu sistemi
+
 ✅ Telemetri raporlama
+
 ✅ Zaman damgalı olay kayıtları
 
 Flutter Mobil Uygulama Özellikleri
 
 ✅ Gerçek zamanlı LED durum izleme
+
 ✅ Uzaktan LED kontrolü
+
 ✅ Kullanım geçmişi (Firestore logları)
+
 ✅ İnteraktif pasta grafiği istatistikleri
+
 ✅ Çoklu platform desteği (iOS/Android)
+
 ✅ Material Design 3 arayüzü
 
 ---
@@ -130,41 +128,73 @@ Flutter Uygulama Kurulumu
 📊 Veritabanı Yapısı
 
 - **Realtime Database
-json{
+
   "devices": {
+  
     "esp32c6-001": {
+  
       "cmd": {
+  
         "isOn": boolean,
+  
         "by": "mobile|device",
+  
         "ts": timestamp
+  
       },
+  
       "telemetry": {
+  
         "isOn": boolean,
+  
         "source": "esp",
+  
         "ts": timestamp
+  
       },
+  
       "events": {
+  
         "eventId": {
+  
           "isOn": boolean,
+  
           "by": "mobile|device",
+  
           "serverTs": timestamp,
+  
           "consumed": boolean
+  
         }
+  
       }
+  
     }
+  
   }
-}
+  
 - **Firestore
 devices/
-  └── {deviceId}/
-      └── logs/
-          └── {logId}/
-              ├── action: "on|off"
-              ├── source: "MOBİL|BUTON"
-              ├── deviceId: string
-              ├── page: string
-              ├── platform: string
-              └── at: timestamp
+
+  └──
+  {deviceId}/
+  
+      └──
+  logs/
+          └──
+  {logId}/
+              ├──
+  action: "on|off"
+              ├──
+  source: "MOBİL|BUTON"
+              ├──
+  deviceId: string
+              ├──
+   page: string
+              ├──
+   platform: string
+              └──
+  at: timestamp
 
 ---
 
